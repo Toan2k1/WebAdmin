@@ -12,6 +12,14 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {HttpClientModule} from "@angular/common/http";
+import { AddUserDialogComponent } from './dialog/add-user-dialog/add-user-dialog.component';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import { EditUserDialogComponent } from './dialog/edit-user-dialog/edit-user-dialog.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -20,16 +28,24 @@ import {HttpClientModule} from "@angular/common/http";
     ProductComponent,
     UserComponent,
     CatalogComponent,
-    SidenavComponent
+    SidenavComponent,
+    AddUserDialogComponent,
+    EditUserDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatPaginatorModule,
-    MatTableModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatPaginatorModule,
+        MatTableModule,
+        HttpClientModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

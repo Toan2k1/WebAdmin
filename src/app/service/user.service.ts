@@ -13,4 +13,8 @@ export class UserService {
     return this.httpClient.get<User[]>(`http://localhost:8000/api/getListUser`);
   }
   deleteUser = (id: string) => this.httpClient.delete(`http://localhost:8000/api/DeleteUser/${id}`)
+  register(user: any){
+    return this.httpClient.post<any>('http://localhost:8000/api/registration',user)
+  }
+  editUser=(data:any,id:number)=>this.httpClient.put<any>(`http://localhost:8000/api/editUser/`+id,data)
 }
