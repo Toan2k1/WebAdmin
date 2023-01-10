@@ -20,6 +20,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { EditUserDialogComponent } from './dialog/edit-user-dialog/edit-user-dialog.component';
 import {MatIconModule} from "@angular/material/icon";
+import { AddCatalogDialogComponent } from './dialog/add-catalog-dialog/add-catalog-dialog.component';
+import { EditCatalogDialogComponent } from './dialog/edit-catalog-dialog/edit-catalog-dialog.component';
+import { AddProductDialogComponent } from './dialog/add-product-dialog/add-product-dialog.component';
+import {MatSelectModule} from "@angular/material/select";
+import { EditProductDialogComponent } from './dialog/edit-product-dialog/edit-product-dialog.component';
+import { ImageProductComponent } from './image-product/image-product.component';
+import { AddImageDialogComponent } from './dialog/add-image-dialog/add-image-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +37,13 @@ import {MatIconModule} from "@angular/material/icon";
     CatalogComponent,
     SidenavComponent,
     AddUserDialogComponent,
-    EditUserDialogComponent
+    EditUserDialogComponent,
+    AddCatalogDialogComponent,
+    EditCatalogDialogComponent,
+    AddProductDialogComponent,
+    EditProductDialogComponent,
+    ImageProductComponent,
+    AddImageDialogComponent,
   ],
     imports: [
         BrowserModule,
@@ -44,7 +57,8 @@ import {MatIconModule} from "@angular/material/icon";
         MatFormFieldModule,
         MatButtonModule,
         MatInputModule,
-        MatIconModule
+        MatIconModule,
+        MatSelectModule
     ],
   providers: [],
   bootstrap: [AppComponent]

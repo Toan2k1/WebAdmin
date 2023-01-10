@@ -1,8 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {UserService} from "../service/user.service";
 import {User} from "../models/user";
+import {Catalog} from "../models/catalog";
+import {CatalogService} from "../service/catalog.service";
+import {AddUserDialogComponent} from "../dialog/add-user-dialog/add-user-dialog.component";
+import {EditUserDialogComponent} from "../dialog/edit-user-dialog/edit-user-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {AddCatalogDialogComponent} from "../dialog/add-catalog-dialog/add-catalog-dialog.component";
+import { EditCatalogDialogComponent } from '../dialog/edit-catalog-dialog/edit-catalog-dialog.component';
 
 @Component({
   selector: 'app-catalog',
@@ -10,12 +16,12 @@ import {User} from "../models/user";
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-ELEMENT_DATA!:User[]
-  constructor(private UserService: UserService) { }
+ELEMENT_DATA!:Catalog[]
+  constructor(private catalogService:CatalogService,private dialog:MatDialog) { }
 
 
-  displayedColumns: string[] = ['position', 'name', 'password', 'email','action'];
-  dataSource = new MatTableDataSource<User>(this.ELEMENT_DATA);
+  displayedColumns: string[] = ['position', 'name','action'];
+  dataSource = new MatTableDataSource<Catalog>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -23,16 +29,29 @@ ELEMENT_DATA!:User[]
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.getListUser()
+    this.getlistCatalog()
   }
-  getListUser(){
-   let resp = this.UserService.getlistUsers();
-   resp.subscribe(report=> this.dataSource.data=report as unknown as User[])
+  getlistCatalog(){
+   let resp = this.catalogService.getlistCatalog();
+   resp.subscribe(report=> this.dataSource.data=report as unknown as Catalog[])
   }
-  deleteUser(id:string){
-    this.UserService.deleteUser(id).subscribe(res=>{
-      this.getListUser()
+  deleteCatalog(id:string){
+    this.catalogService.deleteCatalog(id).subscribe(res=>{
+      this.getlistCatalog()
       alert("thành công")
+    })
+  }
+  openDialog() {
+    this.dialog.open(AddCatalogDialogComponent,{
+      width:'40%'
+    });
+  }
+
+
+  editCatalog(element: any) {
+    this.dialog.open(EditCatalogDialogComponent,{
+      width:'40%',
+      data: element
     })
   }
 }

@@ -10,6 +10,11 @@ export const navbarData = [
     label: 'Products'
   },
   {
+    routeLink: 'productImage',
+    icon: 'fa-solid fa-images',
+    label: 'Image'
+  },
+  {
     routeLink: 'user',
     icon: 'fa-solid fa-user',
     label: 'User'

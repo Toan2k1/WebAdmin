@@ -1,7 +1,7 @@
 table {
   width: 100%;
 }
-button {
+.btn {
   position: relative;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@ button {
   border: none;
 }
 
-button:after {
+.btn:after {
   content: " ";
   width: 0%;
   height: 100%;
@@ -24,17 +24,17 @@ button:after {
   right: 0;
 }
 
-button:hover::after {
+.btn:hover::after {
   right: auto;
   left: 0;
   width: 100%;
 }
 
-button span {
+.btn span {
   text-align: center;
   text-decoration: none;
   width: 100%;
-  padding: 18px 25px;
+  padding: 8px 8px;
   color: #fff;
   font-size: 1.125em;
   font-weight: 700;
@@ -43,7 +43,7 @@ button span {
   transition: all 0.3s ease-in-out;
 }
 
-button:hover span {
+.btn:hover span {
   color: #183153;
   animation: scaleUp 0.3s ease-in-out;
 }
