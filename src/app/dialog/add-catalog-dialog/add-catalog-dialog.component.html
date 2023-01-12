@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Thêm Danh Mục</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (submit)="Submit()">
+    <div class="relative">
+      <mat-form-field appearance="outline" >
+        <mat-label>Enter your UserName</mat-label>
+        <input  matInput placeholder="Tên Danh Mục" type="text"formControlName="name">
+      </mat-form-field>
+      <span style="left: 5px;top: 62px;font-size: 15px;color: red" class="absolute" *ngIf="name && name.invalid && name.touched">*Hãy điền thông tin</span>
+    </div>
+    <div class="advanced-form">
+      <button [disabled]="form.invalid" mat-flat-button color="primary" class="w-full">Xác Nhận</button>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close="" class="bg-yellow-500">Hủy</button>
+</div>
+

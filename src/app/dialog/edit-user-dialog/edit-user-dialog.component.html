@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Sửa Thông Tin Người Dùng</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (submit)="Submit()">
+    <div class="relative">
+      <mat-form-field appearance="outline" >
+        <mat-label>Enter your UserName</mat-label>
+        <input  matInput placeholder="UserName" type="text"formControlName="username">
+      </mat-form-field>
+      <span style="left: 5px;top: 62px;font-size: 15px;color: red" class="absolute" *ngIf="username && username.invalid && username.touched">*Hãy điền thông tin</span>
+    </div>
+    <div class="relative">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your Email</mat-label>
+        <input id="email" matInput placeholder="Email" type="email" required formControlName="email">
+      </mat-form-field>
+      <span style="left: 5px;top: 62px; color:red" class="absolute" *ngIf="email && email.invalid && email.touched">*Example: example@gmail.com</span>
+    </div>
+    <div class="relative">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your Password</mat-label>
+        <input id="password" matInput placeholder="password" type="password" required formControlName="password">
+      </mat-form-field>
+      <span style="left: 5px;top: 62px; color:red" class="absolute" *ngIf="password && password.invalid && password.touched">*Hãy điền thông tin</span>
+    </div>
+
+    <div class="advanced-form">
+      <button [disabled]="form.invalid" mat-flat-button color="primary" class="w-full">Xác Nhận</button>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close="" class="bg-yellow-500">Hủy</button>
+</div>
+
