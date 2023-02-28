@@ -25,8 +25,8 @@ import { EditCatalogDialogComponent } from './dialog/edit-catalog-dialog/edit-ca
 import { AddProductDialogComponent } from './dialog/add-product-dialog/add-product-dialog.component';
 import {MatSelectModule} from "@angular/material/select";
 import { EditProductDialogComponent } from './dialog/edit-product-dialog/edit-product-dialog.component';
-import { ImageProductComponent } from './image-product/image-product.component';
-import { AddImageDialogComponent } from './dialog/add-image-dialog/add-image-dialog.component';
+import { OrderComponent } from './order/order.component';
+import { EditOrderComponent } from './dialog/edit-order/edit-order.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +42,9 @@ import { AddImageDialogComponent } from './dialog/add-image-dialog/add-image-dia
     EditCatalogDialogComponent,
     AddProductDialogComponent,
     EditProductDialogComponent,
-    ImageProductComponent,
-    AddImageDialogComponent,
+    OrderComponent,
+    EditOrderComponent,
+
   ],
     imports: [
         BrowserModule,

@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Sửa Thông Tin Danh Mục</h1>
+<div mat-dialog-content *ngFor="let item of listOrder">
+  <form   [formGroup]="form" (submit)="Submit(item.id)">
+    <div class="relative">
+      <mat-form-field appearance="outline">
+        <mat-label>Chọn Trạng Thái</mat-label>
+        <mat-select formControlName="status">
+          <mat-option  *ngFor="let item of listStatus" [value]="item">
+            {{item}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="advanced-form">
+      <button mat-flat-button color="primary" class="w-full">Xác Nhận</button>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close="" class="bg-yellow-500">Hủy</button>
+</div>
+
+

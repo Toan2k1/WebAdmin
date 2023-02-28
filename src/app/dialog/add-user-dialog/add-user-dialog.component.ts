@@ -12,7 +12,6 @@ export class AddUserDialogComponent implements OnInit {
   form= new FormGroup({
     username:new FormControl('',[Validators.required]),
     password:new FormControl('',[Validators.required,Validators.minLength(8)]),
-    email:new FormControl('',[Validators.required,Validators.email]),
   })
   constructor(private userService: UserService,
 
@@ -27,18 +26,16 @@ export class AddUserDialogComponent implements OnInit {
   get password(){
     return this.form.get('password');
   }
-  get email(){
-    return this.form.get('email');
-  }
+
 
   Submit() {
   const user =this.form.value;
   this.userService.register(user).subscribe(res => {
+    alert("Không Thành Công");
+  },error => {
     alert("Thành Công");
     this.dialogRef.close();
     window.location.reload();
-  },error => {
-    alert("Không Thành Công")
   })
   }
 }

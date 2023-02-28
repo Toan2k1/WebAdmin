@@ -25,6 +25,9 @@
             *ngIf="size && size.invalid && size.touched">*Hãy điền thông tin</span>
     </div>
     <div class="relative">
+      <input placeholder="Hình ảnh" name="file" multiple value="select" #selectFile type="file"   (change)="selectFiles($event)"  #fileInput>
+    </div>
+    <div class="relative">
       <mat-form-field appearance="outline">
         <mat-label>Enter your Description</mat-label>
         <input matInput placeholder="Thêm Mô Tả" type="text" formControlName="description">

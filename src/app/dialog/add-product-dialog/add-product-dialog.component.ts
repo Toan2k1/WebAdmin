@@ -12,7 +12,8 @@ import {Catalog} from "../../models/catalog";
 })
 export class AddProductDialogComponent implements OnInit {
   catalog:Catalog[]=[]
-public  productFile:any=File;
+  file!:File;
+  avatar!:string;
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     categoryName: new FormControl('', [Validators.required]),
@@ -57,15 +58,23 @@ this.getlistCatalog()
 
 
   Submit() {
-      const product = this.form.value;
-      this.productService.addProduct(product).subscribe(res => {
-        console.log(product);
+    const formData=new FormData();
+    formData.append('name',this.form.value.name);
+    formData.append('price',this.form.value.price);
+    formData.append('description',this.form.value.description);
+    formData.append('categoryName',this.form.value.categoryName);
+    formData.append('quantity',this.form.value.quantity);
+    formData.append('color',this.form.value.color);
+    formData.append('size',this.form.value.size);
+    formData.append('file',this.file);
+      this.productService.addProduct(formData).subscribe(res => {
+        console.log(formData);
         console.log(res);
         alert("Thành Công");
         this.dialogRef.close();
         window.location.reload();
       }, error => {
-        console.log(product);
+        console.log(formData);
         alert("Không Thành Công")
       })
     }
@@ -78,8 +87,10 @@ this.getlistCatalog()
     })
   }
 
-  onFileSelected(event: any) {
-    const file =event.target.files[0];
-    this.productFile=file;
+  selectFiles( event:any) {
+    if(event.target.files){
+      this.file = event.target.files[0];
+      this.avatar=this.file.name;
+    }
   }
 }

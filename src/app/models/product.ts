@@ -1,14 +1,22 @@
-import {ImageModel} from "./ImageModel";
+
 
 export class Product{
+  productId!:string
+  avatar!:string
+  file!:File;
   categoryName!:string
-  name!:string
-  size!:string
-  price!:string
-  description!:string
-  quantity!:string
   color!:string
-  image!:ImageModel[]
+  description!:string
+  name!:string
+  price!:string
+  quantity!:string
+  size!:string
+
+
+
+
+
+
 
 
 }

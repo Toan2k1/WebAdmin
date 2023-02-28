@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
   constructor(private productService:ProductService,private dialog:MatDialog) { }
 
 
-  displayedColumns: string[] = ['position', 'name','catalog','size','description','quantity','color','price','action'];
+  displayedColumns: string[] = ['position', 'name','catalog','image','size','description','quantity','color','price','action'];
   dataSource = new MatTableDataSource<Product>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -31,6 +31,13 @@ export class ProductComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getlistProduct()
+  }
+  convertNumber(s: any) {
+    if(typeof s == "number") {
+      let tmp = s.toString();
+      return tmp.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    return s;
   }
   getlistProduct(){
     let resp = this.productService.getlistProduct();

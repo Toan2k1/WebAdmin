@@ -11,11 +11,11 @@ export class CatalogService {
 
   constructor(private httpclient:HttpClient) { }
   getlistCatalog():Observable<Catalog[]>{
-    return this.httpclient.get<Catalog[]>(`http://localhost:8000/api/Category/get-list-category`);
+    return this.httpclient.get<Catalog[]>(`http://localhost:8000/api/cate/list`);
   }
-  deleteCatalog = (id: string) => this.httpclient.delete(`http://localhost:8000/api/Category/deleteCategory/${id}`)
+  deleteCatalog = (id: string) => this.httpclient.delete(`http://localhost:8000/api/cate/delete/${id}`)
   addCatalog(catalog: any){
-    return this.httpclient.post<any>('http://localhost:8000/api/Category/add-category',catalog)
+    return this.httpclient.post<any>('http://localhost:8000/api/cate/add',catalog)
   }
-  editCatalog=(data:any,id:number)=>this.httpclient.put<any>(`http://localhost:8000/api/Category/editCategory/`+id,data)
+  editCatalog=(data:any,id:number)=>this.httpclient.put<any>(`http://localhost:8000/api/cate/update/`+id,data)
 }
