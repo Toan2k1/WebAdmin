@@ -17,4 +17,7 @@ export class UserService {
     return this.httpClient.post<any>('http://localhost:8000/api/auth/registry',user)
   }
   editUser=(data:any,id:number)=>this.httpClient.put<any>(`http://localhost:8000/api/editUser/`+id,data)
+  login(user:any){
+    return this.httpClient.post<any>('http://localhost:8000/api/auth/login',user)
+  }
 }

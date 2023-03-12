@@ -17,5 +17,5 @@ export class CatalogService {
   addCatalog(catalog: any){
     return this.httpclient.post<any>('http://localhost:8000/api/cate/add',catalog)
   }
-  editCatalog=(data:any,id:number)=>this.httpclient.put<any>(`http://localhost:8000/api/cate/update/`+id,data)
+    editCatalog=(data:any,id:number)=>this.httpclient.put<any>(`http://localhost:8000/api/cate/update/`+id,data)
 }

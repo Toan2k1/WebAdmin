@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BodyComponent } from './body/body.component';
-import { ProductComponent } from './product/product.component';
-import { UserComponent } from './user/user.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {HttpClientModule} from "@angular/common/http";
@@ -25,8 +21,16 @@ import { EditCatalogDialogComponent } from './dialog/edit-catalog-dialog/edit-ca
 import { AddProductDialogComponent } from './dialog/add-product-dialog/add-product-dialog.component';
 import {MatSelectModule} from "@angular/material/select";
 import { EditProductDialogComponent } from './dialog/edit-product-dialog/edit-product-dialog.component';
-import { OrderComponent } from './order/order.component';
 import { EditOrderComponent } from './dialog/edit-order/edit-order.component';
+import {ProductComponent} from "./product/product.component";
+import {UserComponent} from "./user/user.component";
+import {SidenavComponent} from "./sidenav/sidenav.component";
+import {OrderComponent} from "./order/order.component";
+import { OrderCompleteComponent } from './order-complete/order-complete.component';
+import { OrderDeliveringComponent } from './order-delivering/order-delivering.component';
+import { OderPrepareComponent } from './oder-prepare/oder-prepare.component';
+import { OrderCancelComponent } from './order-cancel/order-cancel.component';
+import {LoginModule} from "./login/login.module";
 
 @NgModule({
   declarations: [
@@ -44,6 +48,10 @@ import { EditOrderComponent } from './dialog/edit-order/edit-order.component';
     EditProductDialogComponent,
     OrderComponent,
     EditOrderComponent,
+    OrderCompleteComponent,
+    OrderDeliveringComponent,
+    OderPrepareComponent,
+    OrderCancelComponent,
 
   ],
     imports: [
@@ -59,7 +67,8 @@ import { EditOrderComponent } from './dialog/edit-order/edit-order.component';
         MatButtonModule,
         MatInputModule,
         MatIconModule,
-        MatSelectModule
+        MatSelectModule,
+      LoginModule
     ],
   providers: [],
   bootstrap: [AppComponent]

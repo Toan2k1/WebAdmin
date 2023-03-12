@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Sửa Thông Tin Danh Mục</h1>
-<div mat-dialog-content *ngFor="let item of listOrder">
-  <form   [formGroup]="form" (submit)="Submit(item.id)">
+<div mat-dialog-content >
+  <form   [formGroup]="form" >
     <div class="relative">
       <mat-form-field appearance="outline">
         <mat-label>Chọn Trạng Thái</mat-label>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="advanced-form">
-      <button mat-flat-button color="primary" class="w-full">Xác Nhận</button>
+      <button (click)="confirm()" mat-flat-button color="primary" class="w-full">Xác Nhận</button>
     </div>
   </form>
 </div>

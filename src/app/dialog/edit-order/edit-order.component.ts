@@ -14,9 +14,8 @@ export class EditOrderComponent implements OnInit {
   listOrder!: OrderUpdate[]
 
   listStatus = [
-    'Đang Chuẩn Bị Hàng ',
     'Đang Giao Hàng',
-    'Đã Giao Thành Công'
+    'Đã Giao Thành Công',
   ]
   form!:FormGroup
 
@@ -35,9 +34,16 @@ export class EditOrderComponent implements OnInit {
   this.getlistOrder();
   }
 
-  Submit(id:any) {
+  getlistOrder() {
+    this.orderService.getlistOrder().subscribe((res: any) => {
+      this.listOrder = res;
+      console.log(res)
+    })
+  }
+
+  confirm() {
     const data: OrderUpdate = {
-      id:id,
+      id:this.editData.id,
       status:this.form.value.status
     };
     this.orderService.editOrder(data).subscribe(res => {
@@ -45,13 +51,6 @@ export class EditOrderComponent implements OnInit {
       window.location.reload();
     }, error => {
       alert("Không Thành Công")
-    })
-  }
-
-  getlistOrder() {
-    this.orderService.getlistOrder().subscribe((res: any) => {
-      this.listOrder = res;
-      console.log(res)
     })
   }
 }

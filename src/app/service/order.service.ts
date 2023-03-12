@@ -14,4 +14,16 @@ export class OrderService {
   getlistOrder():Observable<Order[]>{
     return this.httpClient.get<Order[]>(`http://localhost:8000/api/order/getListAll`);
   }
+  getListOrderCancel():Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`http://localhost:8000/api/order/getListOrderCancel`);
+  }
+  getListOrderDelivery():Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`http://localhost:8000/api/order/getListOrderDelivery`);
+  }
+  getListOrderSuccess():Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`http://localhost:8000/api/order/getListOrderSuccess`);
+  }
+  getListOrderComplete():Observable<Order[]> {
+    return this.httpClient.get<Order[]>(`http://localhost:8000/api/order/getListOrderComplete`);
+  }
 }
