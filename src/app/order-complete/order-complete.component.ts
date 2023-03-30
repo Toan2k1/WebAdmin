@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {EditOrderComponent} from "../dialog/edit-order/edit-order.component";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-order-complete',
@@ -12,7 +13,7 @@ import {EditOrderComponent} from "../dialog/edit-order/edit-order.component";
   styleUrls: ['./order-complete.component.scss']
 })
 export class OrderCompleteComponent implements OnInit {
-
+  form!:FormGroup
   ELEMENT_DATA!:Order[]
   constructor(private orderService: OrderService,private dialog:MatDialog) { }
 
@@ -26,6 +27,11 @@ export class OrderCompleteComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
+    this.form=new FormGroup(
+      {
+        search:new FormControl("")
+      }
+    )
     this.getListOrderComplete()
   }
   convertNumber(s: any) {
@@ -53,4 +59,12 @@ export class OrderCompleteComponent implements OnInit {
     })
   }
 
+
+  search() {
+      const data=this.form.value.search
+    this.orderService.SearchComplete(data).subscribe((res:any) => {
+      console.log(res)
+      this.dataSource=res
+    })
+  }
 }

@@ -5,6 +5,7 @@ import {EditOrderComponent} from "../dialog/edit-order/edit-order.component";
 import {OrderService} from "../service/order.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-oder-prepare',
@@ -12,7 +13,7 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./oder-prepare.component.scss']
 })
 export class OderPrepareComponent implements OnInit {
-
+  form!:FormGroup
   ELEMENT_DATA!:Order[]
   constructor(private orderService: OrderService,private dialog:MatDialog) { }
 
@@ -27,6 +28,11 @@ export class OderPrepareComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getListOrderSuccess()
+    this.form=new FormGroup(
+      {
+        search:new FormControl("")
+      }
+    )
   }
   convertNumber(s: any) {
     if(typeof s == "number") {
@@ -42,7 +48,13 @@ export class OderPrepareComponent implements OnInit {
     })
 
   }
-
+  search() {
+    const data=this.form.value.search
+    this.orderService.SearchHandle(data).subscribe((res:any) => {
+      console.log(res)
+      this.dataSource=res
+    })
+  }
 
 
 

@@ -26,4 +26,19 @@ export class OrderService {
   getListOrderComplete():Observable<Order[]> {
     return this.httpClient.get<Order[]>(`http://localhost:8000/api/order/getListOrderComplete`);
   }
+  SearchComplete(data:any){
+    return this.httpClient.get<Order>(`http://localhost:8000/api/order/searchComplete?name=${data}`)
+  }
+  SearchHandle(data:any){
+    return this.httpClient.get<Order>(`http://localhost:8000/api/order/search_Waiting_For_Progressing?name=${data}`)
+  }
+  SearchDelivery(data:any){
+    return this.httpClient.get<Order>(`http://localhost:8000/api/order/searchDelivery?name=${data}`)
+  }
+  SearchCancel(data:any){
+    return this.httpClient.get<Order>(`http://localhost:8000/api/order/searchCancel?name=${data}`)
+  }
+  Sum(){
+    return this.httpClient.get<Order>(`http://localhost:8000/api/order/sum`)
+  }
 }

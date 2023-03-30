@@ -3,7 +3,7 @@
   <form [formGroup]="form" (submit)="Submit()">
     <div class="relative">
       <mat-form-field appearance="outline" >
-        <mat-label>Enter your UserName</mat-label>
+        <mat-label>Enter your Catalog</mat-label>
         <input  matInput placeholder="Tên Danh Mục" type="text"formControlName="name">
       </mat-form-field>
       <span style="left: 5px;top: 62px;font-size: 15px;color: red" class="absolute" *ngIf="name && name.invalid && name.touched">*Hãy điền thông tin</span>

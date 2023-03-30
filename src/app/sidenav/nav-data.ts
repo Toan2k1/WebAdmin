@@ -18,5 +18,10 @@ export const navbarData = [
     routeLink: 'user',
     icon: 'fa-solid fa-user',
     label: 'User'
-  }
+  },
+  {
+    routeLink: 'statistical',
+    icon: 'fa-solid fa-chart-line',
+    label: 'Statistical'
+  },
 ];

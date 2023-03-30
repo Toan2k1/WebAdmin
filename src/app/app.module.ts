@@ -7,10 +7,10 @@ import { BodyComponent } from './body/body.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { AddUserDialogComponent } from './dialog/add-user-dialog/add-user-dialog.component';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
@@ -31,6 +31,12 @@ import { OrderDeliveringComponent } from './order-delivering/order-delivering.co
 import { OderPrepareComponent } from './oder-prepare/oder-prepare.component';
 import { OrderCancelComponent } from './order-cancel/order-cancel.component';
 import {LoginModule} from "./login/login.module";
+import { HeaderComponent } from './header/header.component';
+import {AuthGuard} from "./core/auth.guard";
+import { AuthInterceptor } from './core/auth.interceptor';
+import {UserService} from "./service/user.service";
+import {MatSortModule} from "@angular/material/sort";
+import { StatisticalComponent } from './statistical/statistical.component';
 
 @NgModule({
   declarations: [
@@ -52,25 +58,38 @@ import {LoginModule} from "./login/login.module";
     OrderDeliveringComponent,
     OderPrepareComponent,
     OrderCancelComponent,
+    HeaderComponent,
+    StatisticalComponent,
 
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatPaginatorModule,
-        MatTableModule,
-        HttpClientModule,
-        MatDialogModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatInputModule,
-        MatIconModule,
-        MatSelectModule,
-      LoginModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    HttpClientModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule,
+    LoginModule,
+    MatSortModule,
+    FormsModule,
+  ],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    },
+    UserService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

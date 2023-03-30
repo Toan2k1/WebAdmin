@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Catalog} from "../models/catalog";
 import {Product} from "../models/product";
+import {Order} from "../models/order";
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,5 @@ export class ProductService {
     return this.httpclient.post<any>('http://localhost:8000/api/product/add',formData)
   }
   editProduct=(data:any,id:number)=>this.httpclient.put<any>(`http://localhost:8000/api/product/update`+id,data)
+
 }

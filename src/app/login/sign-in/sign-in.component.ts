@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthService} from "../../service/auth.service";
+import {UserService} from "../../service/user.service";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-sign-in',
@@ -19,7 +20,8 @@ export class SignInComponent implements OnInit {
     private formBuilder:FormBuilder,
     private  httpClient:HttpClient,
     private router:Router,
-    private auth:AuthService
+    private auth:UserService,
+    public dialogRef: MatDialogRef<SignInComponent>
   ) { }
 
   ngOnInit(): void {
@@ -32,21 +34,13 @@ export class SignInComponent implements OnInit {
     const user = this.form.value;
     this.auth.login(user).subscribe(
       res=>{
-        console.log(res);
-        alert1.classList.add("is-active")
-        localStorage.setItem("token",res.accessToken);
         localStorage.setItem("user",user.username)
-        setTimeout(()=>{
-          alert1.classList.remove("is-active"),
-            this.router.navigate(['/home'])
-        },4000)
-
+        this.dialogRef.close()
+        window.location.reload()
       },
-      res=>{
-        alert3.classList.add("is-active")
-        setTimeout(()=>{
-          alert3.classList.remove("is-active")
-        },4000)
+      err=>{
+
+
       }
     );
   }

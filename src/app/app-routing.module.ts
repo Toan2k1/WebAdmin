@@ -8,6 +8,7 @@ import { OrderCompleteComponent } from './order-complete/order-complete.componen
 import {OrderDeliveringComponent} from "./order-delivering/order-delivering.component";
 import {OderPrepareComponent} from "./oder-prepare/oder-prepare.component";
 import {OrderCancelComponent} from "./order-cancel/order-cancel.component";
+import {StatisticalComponent} from "./statistical/statistical.component";
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'catalog', component: CatalogComponent},
   {path: 'product', component: ProductComponent},
   {path: 'user', component: UserComponent},
+  {path: 'statistical', component: StatisticalComponent},
   {path: 'order', component: OrderComponent,
   children:[
     {path: 'ordercomplete', component: OrderCompleteComponent},

@@ -5,6 +5,7 @@ import {EditOrderComponent} from "../dialog/edit-order/edit-order.component";
 import {OrderService} from "../service/order.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-order-cancel',
@@ -12,7 +13,7 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./order-cancel.component.scss']
 })
 export class OrderCancelComponent implements OnInit {
-
+  form!:FormGroup
   ELEMENT_DATA!:Order[]
   constructor(private orderService: OrderService,private dialog:MatDialog) { }
 
@@ -26,6 +27,11 @@ export class OrderCancelComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
+    this.form=new FormGroup(
+      {
+        search:new FormControl("")
+      }
+    )
     this.getListOrderCancel()
   }
   convertNumber(s: any) {
@@ -42,7 +48,13 @@ export class OrderCancelComponent implements OnInit {
     })
 
   }
-
+  search() {
+    const data=this.form.value.search
+    this.orderService.SearchCancel(data).subscribe((res:any) => {
+      console.log(res)
+      this.dataSource=res
+    })
+  }
 
 
 

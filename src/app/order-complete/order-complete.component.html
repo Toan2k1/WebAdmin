@@ -1,5 +1,13 @@
 <script src="order.component.ts"></script>
+
 <div class="mat-elevation-z8">
+  <form [formGroup]="form" (ngSubmit)="search()">
+  <mat-form-field appearance="outline">
+    <mat-label>Tìm kiếm </mat-label>
+    <input matInput placeholder=" Tìm kiếm người dùng" formControlName="search">
+  </mat-form-field>
+    <button  mat-raised-button color="primary"> tìm kiếm</button>
+  </form>
   <table mat-table [dataSource]="dataSource">
 
     <!-- Position Column -->
