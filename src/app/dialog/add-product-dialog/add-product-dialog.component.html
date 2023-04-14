@@ -25,7 +25,8 @@
             *ngIf="size && size.invalid && size.touched">*Hãy điền thông tin</span>
     </div>
     <div class="relative">
-      <input placeholder="Hình ảnh" name="file" multiple value="select" #selectFile type="file"   (change)="selectFiles($event)"  #fileInput>
+      <img  class="w-48 h-48 mb-5 rounded-xl" [src]="url" alt="">
+      <input  accept="image/*"  placeholder="Hình ảnh" name="file" multiple value="select" #selectFile type="file"   (change)="selectFiles($event)"  #fileInput>
     </div>
     <div class="relative">
       <mat-form-field appearance="outline">

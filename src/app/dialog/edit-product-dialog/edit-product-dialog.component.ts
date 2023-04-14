@@ -44,8 +44,17 @@ getListcatalog(){
   })
 }
   Submit(){
-  const editproduct=this.form.value
-    this.productService.editProduct(editproduct,this.editData.id).subscribe(res => {
+    const formData=new FormData();
+    formData.append('id', this.editData.id);
+    formData.append('name',this.form.value.name);
+    formData.append('price',this.form.value.price);
+    formData.append('description',this.form.value.description);
+    formData.append('categoryName',this.form.value.categoryName);
+    formData.append('quantity',this.form.value.quantity);
+    formData.append('color',this.form.value.color);
+    formData.append('size',this.form.value.size);
+
+    this.productService.editProduct(formData).subscribe(res => {
       alert("Thành Công")
       this.dialogRef.close();
       window.location.reload();

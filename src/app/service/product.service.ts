@@ -19,6 +19,6 @@ export class ProductService {
   addProduct(formData: any){
     return this.httpclient.post<any>('http://localhost:8000/api/product/add',formData)
   }
-  editProduct=(data:any,id:number)=>this.httpclient.put<any>(`http://localhost:8000/api/product/update`+id,data)
+  editProduct=(data:any)=>this.httpclient.put<any>(`http://localhost:8000/api/product/update`,data)
 
 }

@@ -23,13 +23,14 @@ export class AddProductDialogComponent implements OnInit {
     color: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
   })
+  url: any;
 
   constructor(private productService: ProductService,private catalogService:CatalogService,
               public dialogRef: MatDialogRef<AddProductDialogComponent>) {
   }
 
   ngOnInit(): void {
-this.getlistCatalog()
+this.getlistCatalog();
   }
 
   get name() {
@@ -88,9 +89,15 @@ this.getlistCatalog()
   }
 
   selectFiles( event:any) {
-    if(event.target.files){
-      this.file = event.target.files[0];
-      this.avatar=this.file.name;
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]);
+
+      reader.onload = (event) => {
+        // @ts-ignore
+        this.url = event.target.result;
+      }
     }
   }
 }
